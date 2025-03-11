@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<h1>Welcome to Airbnb</h1>
+<h2>Find your perfect place to stay</h2>
+
+<div class="container mt-5">
+  <form action="/" method="get" class="input-group">
+    <input type="text" name="search" placeholder="What are you looking for?"
+           value="<%= params[:search] %>" class="form-control">
+    <button type="submit" class="btn btn-danger">Search</button>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= flat.title %></h5>
+            <p class="card-text"><%= flat.description.truncate(100) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
