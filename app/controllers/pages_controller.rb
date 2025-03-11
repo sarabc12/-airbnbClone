@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @flats = Flat.where(status: 'available')
+    @flats = Flat.all
   end
 end
