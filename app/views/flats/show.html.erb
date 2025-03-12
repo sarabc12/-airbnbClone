@@ -3,4 +3,7 @@
   <p><strong><%= @flat.title %></strong></p>
   <p><strong><%= @flat.address %></strong></p>
   <p><strong><%= @flat.description %></strong></p>
+  <% @flat.pictures.each do |picture| %>
+  <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 </div>
