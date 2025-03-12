@@ -2,7 +2,7 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
-  end 
+  end
 
   def new
     @flat = Flat.new
@@ -17,6 +17,12 @@ class FlatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to root_path, status: :see_other
   end
 
 

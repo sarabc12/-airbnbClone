@@ -18,6 +18,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= flat.title %></h5>
             <p class="card-text"><%= flat.description.truncate(100) %></p>
+            <%= link_to "Delete", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>
