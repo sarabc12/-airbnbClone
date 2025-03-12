@@ -6,6 +6,9 @@
   <p><strong><%= @flat.description %></strong></p>
   <p><strong><%= @flat.price %></strong></p>
   <p><strong><%= @flat.status %></strong></p>
+  <% @flat.pictures.each do |picture| %>
+  <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 </div>
 
 <h2>Book This Flat</h2>
