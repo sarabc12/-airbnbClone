@@ -18,5 +18,5 @@ Flat.create(title: "Beachfront Apartment", description: "Wake up to the sound of
 Flat.create(title: "Spacious Loft", description: "A stylish and spacious loft with a great city view.", address: "New York", user: User.first, image_url:"https://cdn1.epicgames.com/ue/product/Screenshot/picture%202-1920x1080-ec5f7810596b9d96006b0b5b1247c2be.png?resize=1&w=1920")
 Flat.create(title: "Rustic Cabin in the Woods", description: "A quiet getaway surrounded by nature.", address: "Andorra la Vella", user: User.first, image_url:"https://a0.muscache.com/im/pictures/d9ed1a56-5abd-4fdd-9509-7684d1bce98d.jpg")
 Flat.create(title: "Modern Penthouse", description: "Luxury penthouse with breathtaking views.", address: "London", user: User.first, image_url:"https://do84cgvgcm805.cloudfront.net/article/364/1200/eaef644ed22c7f36416025a6e6737f12e17541c046d39d85d685198268014a33.jpg")
-Booking.create(user: User.first, flat: Flat.first, start_date: Date.today + 5, end_date: Date.today + 10, status: true)
-Booking.create(user: User.first, flat: Flat.first, start_date: Date.today + 7, end_date: Date.today + 14, status: false)
+Booking.create(user: User.first, flat: Flat.first, start_date: Date.today + 5, end_date: Date.today + 10)
+Booking.create(user: User.first, flat: Flat.first, start_date: Date.today + 7, end_date: Date.today + 14)
