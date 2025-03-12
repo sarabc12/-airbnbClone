@@ -16,23 +16,26 @@
 </head>
 <body>
 
-  <!-- Navbar (Shared Across All Pages) -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+  <div class="container-fluid">
+
     <a class="navbar-brand text-danger font-weight-bold" href="/">Airbnb Clone</a>
-    <div class="ml-auto d-flex align-items-center">
 
+    <div class="d-flex align-items-center ms-auto">
 
-      <!-- Profile Icon-->
-      <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "btn btn-outline-dark mr-2" do %>
+      <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "btn btn-outline-dark me-3" do %>
         <i class="fas fa-user-circle fa-2x"></i>
       <% end %>
 
-      <!-- Logout Button-->
       <% if user_signed_in? %>
         <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-dark", form: { data: { turbo: false } } %>
       <% end %>
+
     </div>
-  </nav>
+
+  </div>
+</nav>
 
   <!-- Page Content -->
   <div class="container mt-4">
