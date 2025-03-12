@@ -1,7 +1,7 @@
 class FlatsController < ApplicationController
-
   def show
     @flat = Flat.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -17,18 +17,16 @@ class FlatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def destroy
+    
+   def destroy
     @flat = Flat.find(params[:id])
     @flat.destroy
     redirect_to root_path, status: :see_other
-  end
-
-
+   end
+    
   private
-
+    
   def flat_params
-    params.require(:flat).permit(:title, :description, :address, pictures: [])
+    params.require(:flat).permit(:title, :description, :address, :status, pictures: [])
   end
 end
