@@ -2,6 +2,7 @@
 <h1>Welcome to Airbnb</h1>
 <h2>Find your perfect place to stay</h2>
 
+<!-- Search Bar -->
 <div class="container mt-5">
   <form action="/" method="get" class="input-group">
     <input type="text" name="search" placeholder="What are you looking for?"
@@ -10,16 +11,19 @@
   </form>
 </div>
 
+<!-- Listings -->
 <div class="container">
   <div class="row">
     <% @flats.each do |flat| %>
       <div class="col-md-4">
-        <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title"><%= flat.title %></h5>
-            <p class="card-text"><%= flat.description.truncate(100) %></p>
+        <%= link_to flat_path(flat), class: "text-decoration-none text-dark", data: { turbo: false } do %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= flat.title %></h5>
+              <p class="card-text"><%= flat.description.truncate(100) %></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

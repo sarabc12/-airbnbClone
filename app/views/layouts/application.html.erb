@@ -8,11 +8,41 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
   </head>
 
-  <body>
+   <!-- FontAwesome for profile icon -->
+  <script src="https://kit.fontawesome.com/YOUR-KIT-ID.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Navbar (Shared Across All Pages) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3">
+    <a class="navbar-brand text-danger font-weight-bold" href="/">Airbnb Clone</a>
+    <div class="ml-auto d-flex align-items-center">
+
+
+      <!-- Profile Icon-->
+      <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "btn btn-outline-dark mr-2" do %>
+        <i class="fas fa-user-circle fa-2x"></i>
+      <% end %>
+
+      <!-- Logout Button-->
+      <% if user_signed_in? %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-dark", form: { data: { turbo: false } } %>
+      <% end %>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container mt-4">
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </body>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center p-4 bg-light mt-5">
+    <p>&copy; 2025 Airbnb Clone</p>
+  </footer>
+
+</body>
 </html>
