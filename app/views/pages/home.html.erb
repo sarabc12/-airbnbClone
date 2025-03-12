@@ -16,7 +16,11 @@
       <div class="col-md-4">
         <div class="card mb-3">
           <div class="card-body">
-            <h5 class="card-title"><%= flat.title %></h5>
+          <% if flat.pictures.attached?  %>
+            <%= cl_image_tag flat.pictures.first.key, width: 200, height: 200, crop: :fill %>
+
+          <% end %>
+            <h5 class="card-title"><%= link_to flat.title, flat_path(flat) %></h5>
             <p class="card-text"><%= flat.description.truncate(100) %></p>
             <%= link_to "Delete", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
