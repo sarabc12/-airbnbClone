@@ -1,8 +1,7 @@
 class FlatsController < ApplicationController
-
   def show
     @flat = Flat.find(params[:id])
-  end 
+  end
 
   def new
     @flat = Flat.new
@@ -18,7 +17,6 @@ class FlatsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
   private
 

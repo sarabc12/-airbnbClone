@@ -4,3 +4,10 @@
   <p><strong><%= @flat.address %></strong></p>
   <p><strong><%= @flat.description %></strong></p>
 </div>
+
+<h2>Book This Flat</h2>
+<%= simple_form_for [@flat, @booking] do |f| %>
+<%= f.input :start_date, as: :date, label: "Start Date" %>
+<%= f.input :end_date, as: :date, label: "End Date" %>
+<%= f.submit "Book Now", class: "btn btn-success" %>
+<% end %>
