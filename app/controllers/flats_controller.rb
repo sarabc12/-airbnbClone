@@ -19,10 +19,16 @@ class FlatsController < ApplicationController
     end
   end
 
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to root_path, status: :see_other
+  end
+
 
   private
 
   def flat_params
-    params.require(:flat).permit(:title, :description, :address)
+    params.require(:flat).permit(:title, :description, :address, pictures: [])
   end
 end
