@@ -5,27 +5,29 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = booking.new(bookings_params)
     @flat = Flat.find(params[:flat_id])
-    @booking.list = @list
+    @booking = Booking.new(bookings_params)
+    @booking.flat = @flat
+    @booking.user = current_user
 
     if @booking.save
       redirect_to flats_path(@booking)
     else
-      render :new, status: :unprocessable_entity
+      puts @booking.errors.full_messages
+      render :new # status: :unprocessable_entity
     end
   end
 
-  # def destroy
-  #   @booking = booking.find(params[:id])
-  #   @flat = @booking.flat
-  #   @booking.destroy
-  #   redirect_to flat_path(@booking.flat)
-  # end
+  def destroy
+    @booking = Booking.find(params[:id])
+    @flat = @booking.flat
+    @booking.destroy
+    redirect_to flat_path(@flat)
+  end
 
   private
 
   def bookings_params
-    params.require(:booking).permit(:start_date, :end_date, :status)
+    params.require(:booking).permit(:start_date, :end_date, :flat_id)
   end
 end

@@ -1,8 +1,11 @@
 <h1>Flat Details</h1>
 <div>
+  <p><%= @flat.picture %></p>
   <p><strong><%= @flat.title %></strong></p>
   <p><strong><%= @flat.address %></strong></p>
   <p><strong><%= @flat.description %></strong></p>
+  <p><strong><%= @flat.price %></strong></p>
+  <p><strong><%= @flat.status %></strong></p>
 </div>
 
 <h2>Book This Flat</h2>
@@ -11,3 +14,13 @@
 <%= f.input :end_date, as: :date, label: "End Date" %>
 <%= f.submit "Book Now", class: "btn btn-success" %>
 <% end %>
+
+<h3>Existing Bookings</h3>
+<ul>
+<% @flat.bookings.each do |booking| %>
+<li>
+Booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %>
+<%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn bnt-danger" %>
+</li>
+<% end %>
+</ul>

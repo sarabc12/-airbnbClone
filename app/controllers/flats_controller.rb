@@ -1,6 +1,7 @@
 class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -21,6 +22,6 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:title, :description, :address)
+    params.require(:flat).permit(:title, :description, :address, :status)
   end
 end
