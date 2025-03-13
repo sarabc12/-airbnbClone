@@ -5,10 +5,13 @@
 
     <!-- Search Bar -->
     <div class="search-container">
-      <form action="/" method="get" class="input-group">
+      <%= form_with(url: root_path, method: :get, local: true, class: "input-group") do %>
         <input type="text" name="search" class="form-control" placeholder="Search by title, description, or address..." value="<%= params[:search] %>">
         <button type="submit" class="btn btn-danger">Search</button>
-      </form>
+        <% if params[:search].present? %>
+      <a href="<%= root_path %>" class="btn btn-secondary d-flex align-items-center justify-content-center">Clear</a>
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -16,22 +19,23 @@
 <!-- Listings -->
 <div class="container">
   <div class="row">
-    <% @flats.each do |flat| %>
-      <div class="col-md-4 d-flex">
-        <%= link_to flat_path(flat), class: "text-decoration-none text-dark", data: { turbo: false } do %>
-          <div class="card mb-3 fixed-height-card">
-            <%= image_tag(flat.image_url, class: "card-img-top fixed-image", alt: flat.title) if flat.image_url.present? %>
-            <% if flat.pictures.attached?  %>
-             <%= cl_image_tag flat.pictures.first.key, width: 200, height: 200, crop: :fill %>
-            <% end %>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><%= link_to flat.title, flat_path(flat) %></h5>
-              <p class="card-text text-muted flex-grow-1"><%= flat.description.truncate(100) %></p>
-              <%= link_to "Delete", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+   <% if @flats.any? %>
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-md-4 d-flex">
+          <%= link_to flat_path(flat), class: "text-decoration-none text-dark", data: { turbo: false } do %>
+            <div class="card mb-3 fixed-height-card">
+              <%= image_tag(flat.image_url, class: "card-img-top fixed-image", alt: flat.title) if flat.image_url.present? %>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= flat.title %></h5>
+                <p class="card-text text-muted flex-grow-1"><%= flat.description.truncate(100) %></p>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center text-muted mt-4">No results found for "<%= params[:search] %>".</p>
+  <% end %>
 </div>
