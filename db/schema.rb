@@ -61,7 +61,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_114115) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
     t.integer "price"
     t.string "picture"
     t.string "image_url"
