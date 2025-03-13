@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = Booking.all
   end
@@ -22,17 +21,16 @@ class BookingsController < ApplicationController
     end
   end
 
-   def destroy
-     @booking = Booking.find(params[:id])
-     @flat = @booking.flat
-     @booking.destroy
-     redirect_to flat_path(@flat)
-   end
+  def destroy
+    @booking = Booking.find(params[:id])
+    @flat = @booking.flat
+    @booking.destroy
+    redirect_to flat_path(@flat)
+  end
 
- private
+  private
 
   def bookings_params
     params.require(:booking).permit(:start_date, :end_date, :flat_id, :status)
   end
-
 end
