@@ -1,31 +1,35 @@
 <h1>Flat Details</h1>
-<div>
-  <p><%= @flat.picture %></p>
-  <p><strong><%= @flat.title %></strong></p>
-  <p><strong><%= @flat.address %></strong></p>
-  <p><strong><%= @flat.description %></strong></p>
-  <p><strong><%= @flat.price %></strong></p>
-  <% @flat.pictures.each do |picture| %>
-  <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
+<div class="flat-container" style="display: flex; align-items: flex-start; gap: 20px;">
+  <img src="<%= @flat.image_url %>" alt="Flat picture" style="max-width: 400px; height: auto;" >
+  <div class="flat-info" style="flex: 1;">
+    <p><%= @flat.picture %></p>
+    <p><strong><%= @flat.title %></strong></p>
+    <p><%= @flat.address %></p>
+    <p><%= @flat.description %></p>
+    <p><%= @flat.price %></p>
+    <% @flat.pictures.each do |picture| %>
+      <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
 </div>
+<%= link_to "Delete", flat_path(@flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
 <h2>Book This Flat</h2>
 <%= simple_form_for [@flat, @booking] do |f| %>
-<%= f.input :start_date, as: :date, label: "Start Date" %>
-<%= f.input :end_date, as: :date, label: "End Date" %>
-<%= f.submit "Book Now", class: "btn btn-success" %>
+  <%= f.input :start_date, as: :date, label: "Start Date" %>
+  <%= f.input :end_date, as: :date, label: "End Date" %>
+  <%= f.submit "Book Now", class: "btn btn-success" %>
 <% end %>
 
 <h3>Existing Bookings</h3>
 <ul>
-<% @flat.bookings.each do |booking| %>
-<li>
-Booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %>
-<%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn bnt-danger" %>
-</li>
-<% end %>
+  <% @flat.bookings.each do |booking| %>
+    <li>Booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %>
+      <%= link_to "Cancel", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn bnt-danger" %>
+    </li>
+  <% end %>
 </ul>
+
 
 
 <div style="width: 100%; height: 600px;"
