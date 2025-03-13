@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = Booking.all
   end
-  
+
   def new
     @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
@@ -21,20 +20,18 @@ class BookingsController < ApplicationController
       puts @booking.errors.full_messages
       render :new # status: :unprocessable_entity
     end
-    
-   def destroy
-     @booking = Booking.find(params[:id])
-     @flat = @booking.flat
-     @booking.destroy
-     redirect_to flat_path(@flat)
-   end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @flat = @booking.flat
+    @booking.destroy
+    redirect_to flat_path(@flat)
+  end
 
   private
 
   def bookings_params
     params.require(:booking).permit(:start_date, :end_date, :flat_id)
   end
-
- end
-
- 
+end
