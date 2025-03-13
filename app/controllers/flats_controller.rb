@@ -3,7 +3,7 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @booking = Booking.new
     if @flat.geocoded?
-      @marker = [ {
+      @marker = [{
         lat: @flat.latitude,
         lng: @flat.longitude
         # show_html: render_to_string(partial: "flats/show", locals: { flat: @flat })
