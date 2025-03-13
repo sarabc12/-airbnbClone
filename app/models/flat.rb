@@ -6,6 +6,5 @@ class Flat < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :address, presence: true
-
   # validates :status, presence: true, inclusion: { in: [true, false] }
 end
