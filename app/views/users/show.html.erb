@@ -1,8 +1,29 @@
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li><%= booking.status %></li>
-    <li><%= booking.start_date %></li>
-    <li><%= booking.end_date %></li>
-  <% end %>
-</ul>
+<div class="info-container">
+
+<div class="info-img">
+  <img class="user-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvi7HpQ-_PMSMOFrj1hwjp6LDcI-jm3Ro0Xw&s" alt="user image">
+</div>
+
+<div class= "info-user">
+  <ul>
+    <li><%= @user.first_name %></li>
+    <li><%= @user.last_name %></li>
+    <li><%= @user.email %></li>
+  </ul>
+</div>
+
+<%= button_to "Add new flat", new_flat_path, method: :get, class: "btn btn-outline-primary" %>
+</div>
+
+
+
+<div class="booking-container">
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li><%= booking.status %></li>
+      <li><%= booking.start_date %></li>
+      <li><%= booking.end_date %></li>
+    <% end %>
+  </ul>
+</div>
