@@ -22,12 +22,12 @@ class BookingsController < ApplicationController
     end
   end
 
-   def destroy
-     @booking = Booking.find(params[:id])
-     @flat = @booking.flat
-     @booking.destroy
-     redirect_to flat_path(@flat)
-   end
+  def destroy
+    @booking = Booking.find(params[:id])
+    @flat = @booking.flat
+    @booking.destroy
+    redirect_to flat_path(@flat)
+  end
 
  private
 
