@@ -18,17 +18,20 @@
 
 <!-- Listings -->
 <div class="container">
-  <div class="row">
-   <% if @flats.any? %>
-    <div class="row">
-       <% @flats.each do |flat| %>
-       <div class="col-md-4 mb-4 d-flex align-items-stretch">
-        <%= link_to flat_path(flat), class: "text-decoration-none text-dark", data: { turbo: false } do %>
-          <div class="card shadow-sm border-0 fixed-height-card">
-            <%= image_tag(flat.image_url, class: "card-img-top fixed-image", alt: flat.title) if flat.image_url.present? %>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title"><%= flat.title %></h5>
-              <p class="card-text text-muted flex-grow-1"><%= flat.description.truncate(100) %></p>
+  <% if @flats.any? %>
+    <div class="custom-grid">
+      <% @flats.each do |flat| %>
+        <div class="custom-card">
+          <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
+            <div class="card-content">
+             <% if flat.pictures.attached? %>
+                <%= cl_image_tag flat.pictures.first.key, height: 250, width: 400, crop: :fill, class: "custom-image", alt: flat.title %>
+              <% elsif flat.image_url.present? %>
+                <%= image_tag flat.image_url, class: "custom-image", alt: flat.title %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= flat.title %></h5>
+                <p class="card-text"><%= flat.description.truncate(100) %></p>
               </div>
             </div>
           <% end %>

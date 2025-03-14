@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://kit.fontawesome.com/92e1f1a64b.js" crossorigin="anonymous"></script>
   </head>
 
 <body>
@@ -16,7 +18,10 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
   <div class="container-fluid">
 
-    <a class="navbar-brand text-danger font-weight-bold" href="/">Airbnb Clone</a>
+      <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "https://download.logo.wine/logo/Airbnb/Airbnb-Logo.wine.png", alt: "Airbnb Logo", class: "navbar-logo" %>
+    <% end %>
+
 
     <div class="d-flex align-items-center ms-auto">
 
@@ -40,7 +45,8 @@
 
   <!-- Footer -->
   <footer class="text-center p-4 bg-light mt-5">
-    <p>&copy; 2025 Airbnb Clone</p>
+    <p>&copy; 2025 Airbnb</p>
+    <p>by Mario, Sara and Adam :P</p>
   </footer>
 
 </body>
