@@ -5,7 +5,7 @@ class FlatsController < ApplicationController
     if @flat.geocoded?
       @marker = [{
         lat: @flat.latitude,
-        lng: @flat.longitude
+        lng: @flat.longitude,
         # show_html: render_to_string(partial: "flats/show", locals: { flat: @flat })
       }]
     else
