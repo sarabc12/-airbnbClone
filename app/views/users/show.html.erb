@@ -1,29 +1,66 @@
+<div class="main-container">
 
-<div class="info-container">
+  <div class="left-section" style="width: 40%; float: left; padding-right: 20px;">
 
-<div class="info-img">
-  <img class="user-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvi7HpQ-_PMSMOFrj1hwjp6LDcI-jm3Ro0Xw&s" alt="user image">
-</div>
+    <div class="avatar-container">
 
-<div class= "info-user">
-  <ul>
-    <li><%= @user.first_name %></li>
-    <li><%= @user.last_name %></li>
-    <li><%= @user.email %></li>
-  </ul>
-</div>
+      <div class="info-img">
+        <img class="user-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvi7HpQ-_PMSMOFrj1hwjp6LDcI-jm3Ro0Xw&s" alt="user image">
+      </div>
 
-<%= button_to "Add new flat", new_flat_path, method: :get, class: "btn btn-outline-primary" %>
-</div>
+      <div class="info-user">
+        <p><strong><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></strong></p>
+        <p class="email"><%= @user.email %></p>
+      </div>
+
+      <%= button_to "Add new flat", new_flat_path, method: :get, class: "btn btn-outline-primary" %>
+    </div>
+
+  </div>
 
 
+  <div class="right-section" style="width: 55%; float: left;">
+    <div class="future-booking-container">
+      <h3>Future Bookings</h3>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.start_date >= Date.today %>
+            <li><%= booking.status %></li>
+            <li><%= booking.start_date %></li>
+            <li><%= booking.end_date %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
 
-<div class="booking-container">
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li><%= booking.status %></li>
-      <li><%= booking.start_date %></li>
-      <li><%= booking.end_date %></li>
+    <div class="past-booking-container">
+      <h3>Past Bookings</h3>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.end_date < Date.today %>
+            <li><%= booking.status %></li>
+            <li><%= booking.start_date %></li>
+            <li><%= booking.end_date %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+   <div class="my-flats-container">
+  <h3>My Flats</h3>
+  <div class="my-flats-list">
+    <% @user.flats.each do |flat| %>
+      <div class="flat-card">
+        <div class="flat-image">
+          <%= image_tag flat.picture.url if flat.picture? %>
+        </div>
+        <h4><%= flat.title %></h4>
+      </div>
     <% end %>
-  </ul>
+  </div>
+</div>
+
+
+  </div>
+  <div style="clear: both;"></div>
 </div>

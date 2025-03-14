@@ -1,3 +1,144 @@
 .user-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   border-radius: 50%;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.info-img {
+  margin-bottom: 0px;
+}
+
+.info-user {
+  margin-top: 0;
+}
+
+
+.left-section {
+  width: 280px;
+  height: 90vh;
+  position: sticky;
+  top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn {
+  margin-top: auto;
+}
+
+
+.future-booking-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.past-booking-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.future-booking-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.past-booking-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.future-booking-container li, .past-booking-container li {
+  font-size: 16px;
+  color: #333;
+}
+
+.info-user p {
+  font-size: 20px;
+}
+
+.info-user .email {
+  font-size: 15px;
+  color: #555;
+}
+
+
+.my-flats-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.my-flats-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.my-flats-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.flat-card {
+  width: calc(33.33% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.flat-card h4 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.flat-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.flat-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
