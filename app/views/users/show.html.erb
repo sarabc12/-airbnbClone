@@ -51,9 +51,6 @@
   <div class="my-flats-list">
     <% @user.flats.each do |flat| %>
       <div class="flat-card">
-        <div class="flat-image">
-          <%= image_tag flat.picture.url if flat.picture? %>
-        </div>
         <h4><%= flat.title %></h4>
       </div>
     <% end %>

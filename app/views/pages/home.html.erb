@@ -25,7 +25,7 @@
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
             <div class="card-content">
              <% if flat.pictures.attached? %>
-                <%= cl_image_tag flat.pictures.first.key, height: 250, width: 400, crop: :fill, class: "custom-image", alt: flat.title %>
+                <%= cl_image_tag flat.pictures.first.key, class: "custom-image", alt: flat.title %>
               <% elsif flat.image_url.present? %>
                 <%= image_tag flat.image_url, class: "custom-image", alt: flat.title %>
               <% end %>
