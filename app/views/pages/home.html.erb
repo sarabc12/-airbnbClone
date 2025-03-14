@@ -19,12 +19,16 @@
 <!-- Listings -->
 <div class="container">
   <% if @flats.any? %>
-    <div class="custom-grid"> <!-- New custom CSS grid layout -->
+    <div class="custom-grid">
       <% @flats.each do |flat| %>
         <div class="custom-card">
           <%= link_to flat_path(flat), class: "text-decoration-none text-dark" do %>
             <div class="card-content">
-              <%= image_tag(flat.image_url, class: "custom-image", alt: flat.title) if flat.image_url.present? %>
+             <% if flat.pictures.attached? %>
+                <%= cl_image_tag flat.pictures.first.key, height: 250, width: 400, crop: :fill, class: "custom-image", alt: flat.title %>
+              <% elsif flat.image_url.present? %>
+                <%= image_tag flat.image_url, class: "custom-image", alt: flat.title %>
+              <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= flat.title %></h5>
                 <p class="card-text"><%= flat.description.truncate(100) %></p>
