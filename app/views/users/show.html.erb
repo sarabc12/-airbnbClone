@@ -10,10 +10,10 @@
 
       <div class="info-user">
         <p><strong><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></strong></p>
-        <p class="email"><%= @user.email %></p>
+        <p><%= @user.email %></p>
+        <%= button_to "Add new flat", new_flat_path, method: :get, class: "btn btn-outline-primary" %>
       </div>
 
-      <%= button_to "Add new flat", new_flat_path, method: :get, class: "btn btn-outline-primary" %>
     </div>
 
   </div>
@@ -25,9 +25,7 @@
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.start_date >= Date.today %>
-            <li><%= booking.status %></li>
-            <li><%= booking.start_date %></li>
-            <li><%= booking.end_date %></li>
+            <li><strong><%= booking.flat.title %></strong> from <%= booking.start_date.strftime("%d-%m-%Y") %> to <%= booking.end_date.strftime("%d-%m-%Y") %></li>
           <% end %>
         <% end %>
       </ul>
@@ -38,26 +36,24 @@
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.end_date < Date.today %>
-            <li><%= booking.status %></li>
-            <li><%= booking.start_date %></li>
-            <li><%= booking.end_date %></li>
+            <li><strong><%= booking.flat.title %></strong> from <%= booking.start_date.strftime("%d-%m-%Y") %> to <%= booking.end_date.strftime("%d-%m-%Y") %></li>
           <% end %>
         <% end %>
       </ul>
     </div>
 
-   <div class="my-flats-container">
-  <h3>My Flats</h3>
-  <div class="my-flats-list">
-    <% @user.flats.each do |flat| %>
-      <div class="flat-card">
-        <h4><%= flat.title %></h4>
+    <div class="my-flats-container">
+      <h3>My Flats</h3>
+      <div class="my-flats-list">
+        <% @user.flats.each do |flat| %>
+          <div class="flat-card position-relative">
+            <%= link_to flat_path(flat), class: "stretched-link", style: "position: absolute; inset: 0; z-index: 1;" do %>
+            <% end %>
+            <%= flat.title %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
-
-
-  </div>
-  <div style="clear: both;"></div>
+ <div style="clear: both;"></div>
 </div>

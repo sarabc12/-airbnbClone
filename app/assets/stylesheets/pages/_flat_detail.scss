@@ -4,13 +4,13 @@
   padding: 20px;
 }
 
-
-.booking-container {
-  margin: 50px;
-  box-shadow: 1px 1px 3px gray;
-  padding: 25px;
-  border-radius: 10px;
+/*-----------> FLAT INFO */
+h1 {
+  text-shadow: 4px grey;
+  padding: 3px;
+  margin-bottom: 10px;
 }
+
 
 .img-details {
   border-radius: 10px;
@@ -21,29 +21,42 @@
   padding-bottom: 10px;
 }
 
+.flat-info i {
+  color: #FF5A5F;
+  margin: 5px;
+}
+
+/* --------------> BOOK THIS FLAT */
+
+.booking-container {
+  box-shadow: 1px 1px 3px gray;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
 .bookings-container ul {
   list-style: none;
   padding: 10px;
 }
 
+.bookings-container {
+  padding: 10px;
+  margin-top: 15px;
+}
+
 .bookings-container li {
   box-shadow: 1px 1px 3px gray;
   margin: 3px;
-  text-align: center;
+  text-align: left;
+  padding: 5px;
 }
 
 .bookings-container h3 {
   margin-right: 3px;
 }
 
-.bookings-container {
-  padding: 10px;
-}
 
-h1 {
-  text-shadow: 4px grey;
-  padding: 3px;
-}
 
 .btn-outline-secondary {
   background-color: #FF5A5F;

@@ -19,13 +19,13 @@
   <div class="container-fluid">
 
       <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://download.logo.wine/logo/Airbnb/Airbnb-Logo.wine.png", alt: "Airbnb Logo", class: "navbar-logo" %>
+      <%= image_tag "https://img.icons8.com/?size=512&id=103424&format=png", alt: "Airbnb Logo", class: "navbar-logo" %>
     <% end %>
 
 
     <div class="d-flex align-items-center ms-auto">
 
-      <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "btn btn-outline-dark me-3" do %>
+      <%= link_to (user_signed_in? ? user_path(current_user) : new_user_session_path), class: "user-account-link" do %>
         <i class="fas fa-user-circle fa-2x"></i>
       <% end %>
 

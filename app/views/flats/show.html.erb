@@ -1,16 +1,16 @@
 <div class="all-container">
-  <h1>Flat Details</h1>
+  <h1><strong><%= @flat.title %></strong></h1>
   <div class="flat-container" style="display: flex; align-items: flex-start; gap: 20px;">
-    <img class="img-details" src="<%= @flat.image_url %>" alt="Flat picture" style="max-width: 400px; height: auto;" >
+    <% if @flat.image_url.present? %>
+      <img class="img-details" src="<%= @flat.image_url %>" alt="Flat picture" style="max-width: 400px; height: auto;">
+    <% elsif @flat.pictures.any? %>
+      <%= cl_image_tag @flat.pictures.first.key, class: "img-details", alt: "Flat picture", width: 400, crop: :fill %>
+    <% end %>
     <div class="flat-info" style="flex: 1;">
       <p><%= @flat.picture %></p>
-      <p><strong><%= @flat.title %></strong></p>
-      <p>City: <%= @flat.address %></p>
+      <p><i class="fa-solid fa-map-location-dot"></i><%= @flat.address %></p>
       <p><%= @flat.description %></p>
-      <p>Price: <%= @flat.price %>$ per night</p>
-      <% @flat.pictures.each do |picture| %>
-        <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+      <p><i class="fa-solid fa-tag"></i><%= @flat.price %>$ per night</p>
       <%= link_to flat_path(@flat), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
         <i class="fa-solid fa-trash" style="color: #FF5A5F;"></i>
       <% end %>
@@ -33,7 +33,7 @@
     <ul>
       <% @flat.bookings.each do |booking| %>
         <li>
-          Booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %>
+          Booked by <%= booking.user.email %> from <%= booking.start_date.strftime("%d-%m-%Y") %> to <%= booking.end_date.strftime("%d-%m-%") %>
           <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <i class="fa-solid fa-trash" style="color: #FF5A5F;"></i>
           <% end %>
