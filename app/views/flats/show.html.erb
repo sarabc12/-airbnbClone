@@ -33,7 +33,7 @@
     <ul>
       <% @flat.bookings.each do |booking| %>
         <li>
-          Booked by <%= booking.user.email %> from <%= booking.start_date.strftime("%d-%m-%Y") %> to <%= booking.end_date.strftime("%d-%m-%") %>
+          Booked by <%= booking.user.email %> from <%= booking.start_date.strftime("%d-%m-%Y") %> to <%= booking.end_date.strftime("%d-%m-%Y") %>
           <%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
             <i class="fa-solid fa-trash" style="color: #FF5A5F;"></i>
           <% end %>
